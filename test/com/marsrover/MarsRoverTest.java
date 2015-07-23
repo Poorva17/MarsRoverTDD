@@ -13,6 +13,16 @@ public class MarsRoverTest {
 
         assertEquals(new MarsRover(0, 0, 'N'), marsRover);
     }
+
+    @Test
+    public void shouldKnowBoundaryOfPlateau() {
+        MarsRover marsRover = new MarsRover(1, 3, 'N');
+
+        boolean actualState = marsRover.isInsidePlateau();
+
+        assertEquals(true, actualState);
+    }
 }
+
 
 

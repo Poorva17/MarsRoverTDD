@@ -33,6 +33,10 @@ public class MarsRover {
         result = 31 * result + (int) direction;
         return result;
     }
+
+    public boolean isInsidePlateau() {
+        return true;
+    }
 }
 
 
