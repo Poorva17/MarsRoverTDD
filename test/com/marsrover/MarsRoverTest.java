@@ -18,7 +18,7 @@ public class MarsRoverTest {
     public void shouldKnowBoundaryOfPlateau() {
         MarsRover marsRover = new MarsRover(1, 3, 'N');
 
-        boolean actualState = marsRover.isInsidePlateau();
+        boolean actualState = marsRover.isValid();
 
         assertEquals(true, actualState);
     }
@@ -27,10 +27,20 @@ public class MarsRoverTest {
     public void shouldKnowInvalidPosition() {
         MarsRover marsRover = new MarsRover(6, 4, 'N');
 
-        boolean actualState = marsRover.isInsidePlateau();
+        boolean actualState = marsRover.isValid();
 
         assertEquals(false, actualState);
     }
+
+    @Test
+    public void shouldHaveValidDirection() {
+        MarsRover marsRover = new MarsRover(5, 2, 'P');
+
+        boolean actualState = marsRover.isValid();
+
+        assertEquals(false, actualState);
+    }
+
 }
 
 
