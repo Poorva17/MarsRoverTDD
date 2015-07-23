@@ -41,6 +41,25 @@ public class MarsRoverTest {
         assertEquals(false, actualState);
     }
 
+    @Test
+    public void shouldKnowNavigationForInputOne() {
+        MarsRover marsRover = new MarsRover(1, 2, 'N');
+        String navigationInput = "LMLMLMLMM";
+
+        MarsRover expectedMarsRover = new MarsRover(1, 3, 'N');
+
+        assertEquals(marsRover.move(navigationInput), expectedMarsRover);
+    }
+
+    @Test
+    public void shouldKnowNavigationForInputTwo() {
+        MarsRover marsRover = new MarsRover(3, 3, 'E');
+        String navigationInput = "MMRMMRMRRM";
+
+        MarsRover expectedMarsRover = new MarsRover(5, 1, 'E');
+
+        assertEquals(marsRover.move(navigationInput), expectedMarsRover);
+    }
 }
 
 

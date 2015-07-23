@@ -12,14 +12,14 @@ public class MarsRover {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MarsRover marsRover = (MarsRover) o;
-
-        if (positionX != marsRover.positionX) return false;
-        if (positionY != marsRover.positionY) return false;
+    public boolean equals(Object that) {
+        if (this == that) return true;
+        if (that == null || getClass() != that.getClass()) return false;
+        MarsRover marsRover = (MarsRover) that;
+        if (positionX != marsRover.positionX)
+            return false;
+        if (positionY != marsRover.positionY)
+            return false;
         return !(direction != null ? !direction.equals(marsRover.direction) : marsRover.direction != null);
 
     }
@@ -54,6 +54,62 @@ public class MarsRover {
         }
         return false;
     }
+
+    public MarsRover move(String navigationInput) {
+        for (int index = 0; index < navigationInput.length(); index++) {
+            char inputForOneMove = navigationInput.charAt(index);
+            switch (inputForOneMove) {
+                case 'M':
+                    this.moveForward();
+                    break;
+                case 'L':
+                    this.changeDirectionToLeft();
+                    break;
+                case 'R':
+                    this.changeDirectionToRight();
+            }
+        }
+        this.showCurrentPosition();
+        return this;
+    }
+
+    private void changeDirectionToRight() {
+        if (this.direction.equals("N"))
+            this.direction = "E";
+        else if (this.direction.equals("E"))
+            this.direction = "S";
+        else if (this.direction.equals("S"))
+            this.direction = "W";
+        else if (this.direction.equals("W"))
+            this.direction = "N";
+    }
+
+    private void changeDirectionToLeft() {
+        if (this.direction.equals("N"))
+            this.direction = "W";
+        else if (this.direction.equals("W"))
+            this.direction = "S";
+        else if (this.direction.equals("S"))
+            this.direction = "E";
+        else if (this.direction.equals("E"))
+            this.direction = "N";
+    }
+
+    private void moveForward() {
+        if (this.direction.equals("N"))
+            this.positionY++;
+        else if (this.direction.equals("S"))
+            this.positionY--;
+        else if (this.direction.equals("E"))
+            this.positionX++;
+        else if (this.direction.equals("W"))
+            this.positionX--;
+    }
+
+    public void showCurrentPosition() {
+        System.out.print("MarsRover Position :" + positionX + " " + positionY + " " + direction);
+    }
+
 }
 
 
