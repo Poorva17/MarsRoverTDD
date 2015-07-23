@@ -35,7 +35,14 @@ public class MarsRover {
     }
 
     public boolean isInsidePlateau() {
-        return true;
+        Plateau plateau = new Plateau(0, 0, 5, 5);
+        if ((this.positionX >= plateau.bottomLeftX) &&
+                (this.positionX <= plateau.topRightX) &&
+                (this.positionY >= plateau.bottomLeftY) &&
+                (this.positionY <= plateau.topRightY)) {
+            return true;
+        }
+        return false;
     }
 }
 

@@ -22,6 +22,15 @@ public class MarsRoverTest {
 
         assertEquals(true, actualState);
     }
+
+    @Test
+    public void shouldKnowInvalidPosition() {
+        MarsRover marsRover = new MarsRover(6, 4, 'N');
+
+        boolean actualState = marsRover.isInsidePlateau();
+
+        assertEquals(false, actualState);
+    }
 }
 
 
